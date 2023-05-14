@@ -9,9 +9,11 @@ const Products = () => {
         {products.map((product) => {
           return (
             <div className="product-card" key={product.id}>
-              <h2>Title : {product.title}</h2>
+              <img src={product.img} alt="picture" width="50%" height="50%" />
+              <h2>Name : {product.name}</h2>
               <p>Author : {product.author}</p>
               <p>Price : INR {product.price}</p>
+              <p>Category : {product.category}</p>
               <button>Add to Card</button>
               <button>Add to Whishlist</button>
             </div>
