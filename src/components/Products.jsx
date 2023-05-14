@@ -5,6 +5,14 @@ import { DataContext } from "../contexts/DataContext";
 
 const Products = () => {
   const { addToCart } = useContext(DataContext);
+  const addToCart = (product) => {
+    if (!token) {
+      navigate("/login");
+    } else {
+      dispatchCart({ type: "ADD_TO_CART", payload: product });
+      notifyCart();
+    }
+  };
   return (
     <>
       <h2>Products Card - Store</h2>
