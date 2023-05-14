@@ -1,8 +1,12 @@
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 import Products from "./components/Products";
+import Cart from "./pages/Cart/Cart";
+import { useContext } from "react";
+import { DataContext } from "./contexts/DataContext";
 
-function App() {
+const App = () => {
+  const { cartData } = useContext(DataContext);
   const getStyle = ({ isActive }) => ({
     color: isActive ? "red" : "blue",
   });
@@ -17,7 +21,7 @@ function App() {
           Store
         </NavLink>
         <NavLink to="/cart" style={getStyle}>
-          Cart
+          Cart - {cartData.length}
         </NavLink>
         <NavLink to="/whishlist" style={getStyle}>
           Whishlist
@@ -29,9 +33,10 @@ function App() {
       <Routes>
         <Route path="/" />
         <Route path="/store" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

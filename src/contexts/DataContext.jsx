@@ -1,7 +1,13 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  return <DataContext.Provider>{children}</DataContext.Provider>;
+  const [cartData, setCartData] = useState([]);
+  const addToCart = (newData) => setCartData([...cartData, newData]);
+  return (
+    <DataContext.Provider value={{ addToCart, cartData }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
