@@ -4,6 +4,7 @@ import Products from "./components/Products";
 import Cart from "./pages/Cart/Cart";
 import { useContext } from "react";
 import { DataContext } from "./contexts/DataContext";
+import Mockman from "mockman-js";
 
 const App = () => {
   const { cartData } = useContext(DataContext);
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/" />
         <Route path="/store" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/mockapi" element={<Mockman />} />
       </Routes>
     </div>
   );
