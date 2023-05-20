@@ -1,4 +1,4 @@
-import { defaultFilterState } from "./defaultFilterState.jsx";
+import { defaultFilterState } from "./DefaultFilterState";
 
 const filterReducer = (state, action) => {
   const SORT = "SORT";
