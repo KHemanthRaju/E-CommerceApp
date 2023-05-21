@@ -7,6 +7,8 @@ import { ProductPage } from "./pages/ProductPage/ProductPage";
 import { CartPage } from "./pages/CartPage/CartPage";
 import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
 import { HomePage } from "./pages/HomePage/HomePage";
+import { Navbar } from "./components";
+import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   const { cartData } = useContext(DataContext);
@@ -17,7 +19,8 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header"></header>
-
+      <ScrollToTop />
+      <Navbar />
       {/* <nav>
         <h3>Book Factory</h3>
         <NavLink to="/" style={getStyle}>
