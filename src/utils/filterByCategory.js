@@ -1,5 +1,5 @@
 export const filterByCategory = (products, category) => {
-  if (category.length == 0) {
+  if (category.length === 0) {
     return products;
   } else {
     let reduce = products.reduce((acc, curr) => {

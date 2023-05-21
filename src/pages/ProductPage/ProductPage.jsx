@@ -1,40 +1,43 @@
-import { useEffect, useReducer, useState } from "react";
-import { toast } from "react-hot-toast";
-import { defaultFilterState, filterReducer } from "../../reducers";
-import { useCart, useWishlist } from "../../contexts";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useReducer, useEffect, useState } from "react";
 import axios from "axios";
-import { css } from "@emotion/react";
+import "./ProductPage.css";
+import { Link, useNavigate } from "react-router-dom";
+import { defaultFilterState, filterReducer } from "../../reducers/index";
 import {
-  filterByCategory,
+  getMinMaxPrice,
+  filterBySort,
   filterByPriceRange,
   filterByRating,
-  getMinMaxPrice,
-} from "../../utils";
+  filterByCategory,
+} from "../../utils/index";
+import { useWishlist, useCart, useAuth } from "../../contexts/index";
+import toast, { Toaster } from "react-hot-toast";
 import { BounceLoader } from "react-spinners";
-import "../ProductPage/ProductPage.css";
-import { filterBySort } from "../../utils/filterBySort";
+import { css } from "@emotion/react";
 
-const notifyCart = () => toast.success("Added to Cart");
-const notifyWishlist = () => toast.success("Added to Wishlist");
+const notifyCart = () => toast.success("Added to Card 👜 !!");
+const notifyWishlist = () => toast.success("Added to Wishlist 💗 !! ");
 
-const ProductPage = () => {
+export const ProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
   const [products, setProducts] = useState([]);
+  const {
+    user: { token },
+  } = useAuth();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(`/api/products`);
+      const { data } = await axios.get("/api/products");
       setProducts(data.products);
     })();
   }, []);
 
-  //Loading Timeout
+  // Loading timeout
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -50,15 +53,21 @@ const ProductPage = () => {
   `;
 
   const { minPrice, maxPrice } = getMinMaxPrice(products);
-  const { priceSlider, category, rating, sortBy } = state;
+  const { priceSlider, category, rating, sortby } = state;
 
-  const filteredBySort = filterBySort(products, sortBy);
+  const filteredBySort = filterBySort(products, sortby);
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
   const filteredProducts = filterByCategory(filteredByRating, category);
 
+  // add to wishlist
   const addToWishlist = (product) => {
-    dispatchWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+    if (!token) {
+      navigate("/login");
+    } else {
+      dispatchWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+      notifyWishlist();
+    }
   };
 
   const removeFromWishlist = (productId) => {
@@ -66,15 +75,21 @@ const ProductPage = () => {
   };
 
   const isInWishlist = (productId) => {
-    return wishlist.some((product) => product.id === productId);
+    return wishlist.some((product) => product._id === productId);
   };
 
+  // Add to Cart
   const addToCart = (product) => {
-    dispatchCart({ type: "ADD_TO_CART", payload: product });
+    if (!token) {
+      navigate("/login");
+    } else {
+      dispatchCart({ type: "ADD_TO_CART", payload: product });
+      notifyCart();
+    }
   };
 
   const removeFromCart = (productId) => {
-    dispatchCart({ type: "REMOVE_FROM_CART", payload: productId });
+    dispatchWishlist({ type: "REMOVE_FROM_CART", payload: productId });
   };
 
   return (
@@ -172,7 +187,7 @@ const ProductPage = () => {
                     }}
                     checked={rating === "4-AND-ABOVE"}
                   />
-                  <span className="check-desc">4 stars &amp; under</span>
+                  <span className="check-desc">4 Stars &amp; under</span>
                 </label>
                 <label className="select-input">
                   <input
@@ -184,7 +199,7 @@ const ProductPage = () => {
                     }}
                     checked={rating === "3-AND-ABOVE"}
                   />
-                  <span className="check-desc">3 stars &amp; under</span>
+                  <span className="check-desc">3 Stars &amp; under</span>
                 </label>
                 <label className="select-input">
                   <input
@@ -196,7 +211,7 @@ const ProductPage = () => {
                     }}
                     checked={rating === "2-AND-ABOVE"}
                   />
-                  <span className="check-desc">2 stars &amp; under</span>
+                  <span className="check-desc">2 Stars &amp; under</span>
                 </label>
                 <label className="select-input">
                   <input
@@ -208,7 +223,7 @@ const ProductPage = () => {
                     }}
                     checked={rating === "1-AND-ABOVE"}
                   />
-                  <span className="check-desc">1 stars &amp; under</span>
+                  <span className="check-desc">1 Stars &amp; under</span>
                 </label>
               </div>
             </div>
@@ -220,7 +235,7 @@ const ProductPage = () => {
                     type="radio"
                     name="sort-price"
                     className="radio-input"
-                    onChange={() => {
+                    onChange={(e) => {
                       dispatch({ type: "SORT", payload: "LOW-TO-HIGH" });
                     }}
                   />
@@ -231,18 +246,19 @@ const ProductPage = () => {
                     type="radio"
                     name="sort-price"
                     className="radio-input"
-                    onChange={() => {
+                    onChange={(e) => {
                       dispatch({ type: "SORT", payload: "HIGH-TO-LOW" });
                     }}
-                    checked={sortBy === "HIGH-TO-LOW"}
+                    checked={sortby === "HIGH-TO-LOW"}
                   />
                   <span className="check-desc">Price - High to Low</span>
                 </label>
               </div>
             </div>
           </div>
+
           {/* right section display cards */}
-          <div className="featured_container bd-grid">
+          <div className="featured__container bd-grid">
             {filteredProducts.map((item) => {
               const {
                 img,
@@ -255,17 +271,18 @@ const ProductPage = () => {
                 rating,
                 _id,
               } = item;
-
               const isAddedToWishlist = isInWishlist(_id);
 
               return (
-                <div key={_id} className="featured_product">
+                <div key={_id} className="featured__product">
                   <div className="card-vertical">
                     <img src={img} className="card-image" alt="card" />
-                    <span className="card-badge">Badge : {badge}</span>
+                    <span className="card-badge">{badge}</span>
                     <i
                       className="fas fa-heart"
-                      style={{ color: isAddedToWishlist ? "tomato" : "silver" }}
+                      style={{
+                        color: isAddedToWishlist ? "tomato" : "silver",
+                      }}
                       onClick={() => {
                         if (isAddedToWishlist) {
                           removeFromWishlist(_id);
@@ -283,21 +300,25 @@ const ProductPage = () => {
                       <div className="price">
                         <p className="disc-price">{discountPrice}</p>
                         <p className="actual-price">{price}</p>
-                        <p className="price-percentage">{offerPercent}</p>
+                        <p class Name="price-percentage">
+                          {offerPercent}
+                        </p>
                       </div>
                     </div>
                     {cart?.some((cartItem) => item._id === cartItem._id) ? (
                       <Link to="/cart">
                         <button className="btn btn-danger add-cart">
-                          Go to Cart
+                          Go to cart
                         </button>
                       </Link>
                     ) : (
                       <button
                         className="btn btn-success add-cart"
-                        onClick={() => addToCart(item)}
+                        onClick={() => {
+                          addToCart(item);
+                        }}
                       >
-                        Add to cart
+                        Add to Cart
                       </button>
                     )}
                   </div>
@@ -310,4 +331,3 @@ const ProductPage = () => {
     </>
   );
 };
-export default ProductPage;

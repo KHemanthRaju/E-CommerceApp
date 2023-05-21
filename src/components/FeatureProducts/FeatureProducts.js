@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
-import { useCart } from "../../contexts/index";
+import { useCart, useAuth } from "../../contexts/index";
 
 import toast from "react-hot-toast";
 
@@ -12,9 +12,9 @@ const FeatureProducts = () => {
   const addToCart = (product) => {
     dispatchCart({ type: "ADD_TO_CART", payload: product });
   };
-  // const {
-  //   user: { token },
-  // } = useAuth();
+  const {
+    user: { token },
+  } = useAuth();
 
   const navigate = useNavigate();
 
@@ -58,12 +58,12 @@ const FeatureProducts = () => {
                     onClick={() => {
                       addToCart(item);
                       notifyCart();
-                      // if (!token) {
-                      //   navigate("/login");
-                      // } else {
-                      //   addToCart(item);
-                      //   notifyCart();
-                      // }
+                      if (!token) {
+                        navigate("/login");
+                      } else {
+                        addToCart(item);
+                        notifyCart();
+                      }
                     }}
                   >
                     Add to Cart
