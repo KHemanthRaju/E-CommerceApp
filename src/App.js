@@ -6,6 +6,8 @@ import { DataContext } from "./contexts/DataContext";
 import Mockman from "mockman-js";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { CartPage } from "./pages/CartPage/CartPage";
+import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
+import { HomePage } from "./pages/HomePage/HomePage";
 
 const App = () => {
   const { cartData } = useContext(DataContext);
@@ -28,7 +30,7 @@ const App = () => {
         <NavLink to="/cart" style={getStyle}>
           Cart - {cartData.length}
         </NavLink>
-        <NavLink to="/whishlist" style={getStyle}>
+        <NavLink to="/wishlist" style={getStyle}>
           Whishlist
         </NavLink>
         <NavLink to="/login" style={getStyle}>
@@ -36,7 +38,8 @@ const App = () => {
         </NavLink>
       </nav>
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/store" element={<Products />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />

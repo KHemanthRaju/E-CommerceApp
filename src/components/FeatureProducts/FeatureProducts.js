@@ -2,19 +2,19 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
-import { useCart, useAuth } from "../../context/index";
+import { useCart } from "../../context/index";
 
 import toast from "react-hot-toast";
 
 const FeatureProducts = () => {
-  const notifyCart = () => toast.success("Added to Card!");
+  const notifyCart = () => toast.success("Added to Cart!");
   const { cart, dispatchCart } = useCart();
   const addToCart = (product) => {
     dispatchCart({ type: "ADD_TO_CART", payload: product });
   };
-  const {
-    user: { token },
-  } = useAuth();
+  // const {
+  //   user: { token },
+  // } = useAuth();
 
   const navigate = useNavigate();
 
@@ -56,12 +56,14 @@ const FeatureProducts = () => {
                   <button
                     className="btn btn-success add-cart"
                     onClick={() => {
-                      if (!token) {
-                        navigate("/login");
-                      } else {
-                        addToCart(item);
-                        notifyCart();
-                      }
+                      addToCart(item);
+                      notifyCart();
+                      // if (!token) {
+                      //   navigate("/login");
+                      // } else {
+                      //   addToCart(item);
+                      //   notifyCart();
+                      // }
                     }}
                   >
                     Add to Cart

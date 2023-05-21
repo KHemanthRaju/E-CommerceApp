@@ -1,0 +1,28 @@
+.footer {
+  width: 100vw;
+  background-color: var(--grey-color);
+  margin-top: 4rem;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.f-connectme {
+  color: var(--dank-green);
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.socials-icon {
+  height: 1.4rem;
+  width: 1.4rem;
+}
