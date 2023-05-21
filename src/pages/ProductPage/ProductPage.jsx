@@ -29,7 +29,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/api/products");
+      const { data } = await axios.get(`/api/products`);
       setProducts(data.products);
     })();
   }, []);

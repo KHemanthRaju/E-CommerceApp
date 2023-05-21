@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
-import { useCart } from "../../context/index";
+import { useCart } from "../../contexts/index";
 
 import toast from "react-hot-toast";
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useWishlist, useCart, useAuth } from "../../context/index";
+import { useWishlist, useCart, useAuth } from "../../contexts/index";
 import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
