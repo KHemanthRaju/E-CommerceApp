@@ -1,4 +1,5 @@
-export const filterbySort = (products, sortBy) => {
+export const filterBySort = (products, sortBy) => {
+  console.log(sortBy);
   switch (sortBy) {
     case "LOW-TO-HIGH":
       return products.sort((a, b) => a.price - b.price);

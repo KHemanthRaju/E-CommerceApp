@@ -1,9 +1,9 @@
 import { defaultFilterState } from "./DefaultFilterState";
 
 const filterReducer = (state, action) => {
-  const SORT = "SORT";
+  // const SORT = "SORT";
   switch (action.type) {
-    case SORT:
+    case "SORT":
       return { ...state, sortby: action.payload };
     case "PRICE-SLIDER":
       return { ...state, priceSlider: action.payload };

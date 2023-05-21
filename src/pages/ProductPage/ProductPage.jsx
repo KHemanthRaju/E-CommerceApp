@@ -9,11 +9,11 @@ import {
   filterByCategory,
   filterByPriceRange,
   filterByRating,
-  filterbySort,
   getMinMaxPrice,
 } from "../../utils";
 import { BounceLoader } from "react-spinners";
 import "../ProductPage/ProductPage.css";
+import { filterBySort } from "../../utils/filterBySort";
 
 const notifyCart = () => toast.success("Added to Cart");
 const notifyWishlist = () => toast.success("Added to Wishlist");
@@ -52,7 +52,7 @@ const ProductPage = () => {
   const { minPrice, maxPrice } = getMinMaxPrice(products);
   const { priceSlider, category, rating, sortBy } = state;
 
-  const filteredBySort = filterbySort(products, sortBy);
+  const filteredBySort = filterBySort(products, sortBy);
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
   const filteredProducts = filterByCategory(filteredByRating, category);
@@ -220,7 +220,7 @@ const ProductPage = () => {
                     type="radio"
                     name="sort-price"
                     className="radio-input"
-                    onChange={(e) => {
+                    onChange={() => {
                       dispatch({ type: "SORT", payload: "LOW-TO-HIGH" });
                     }}
                   />
@@ -231,10 +231,10 @@ const ProductPage = () => {
                     type="radio"
                     name="sort-price"
                     className="radio-input"
-                    onChange={(e) => {
+                    onChange={() => {
                       dispatch({ type: "SORT", payload: "HIGH-TO-LOW" });
                     }}
-                    // checked={sortBy === "HIGH-TO-LOW"}
+                    checked={sortBy === "HIGH-TO-LOW"}
                   />
                   <span className="check-desc">Price - High to Low</span>
                 </label>
@@ -262,7 +262,7 @@ const ProductPage = () => {
                 <div key={_id} className="featured_product">
                   <div className="card-vertical">
                     <img src={img} className="card-image" alt="card" />
-                    <span className="card-badge">{badge}</span>
+                    <span className="card-badge">Badge : {badge}</span>
                     <i
                       className="fas fa-heart"
                       style={{ color: isAddedToWishlist ? "tomato" : "silver" }}

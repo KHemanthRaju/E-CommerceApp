@@ -7,7 +7,7 @@ const defaultFilterState = {
   priceSlider: maxPrice,
   category: [],
   rating: "1-AND-ABOVE",
-  sortby: "HIGH-TO-LOW",
+  sortBy: "HIGH-TO-LOW",
 };
 
 export { defaultFilterState };
