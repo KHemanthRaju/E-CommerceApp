@@ -13,6 +13,7 @@ import {
   getMinMaxPrice,
 } from "../../utils";
 import { BounceLoader } from "react-spinners";
+import "../ProductPage/ProductPage.css";
 
 const notifyCart = () => toast.success("Added to Cart");
 const notifyWishlist = () => toast.success("Added to Wishlist");
@@ -105,7 +106,7 @@ const ProductPage = () => {
                 <input
                   type="range"
                   onInput={(e) => {
-                    dispatch({ type: "PRICE_SLIDER", payload: e.target.value });
+                    dispatch({ type: "PRICE-SLIDER", payload: e.target.value });
                   }}
                   min={minPrice}
                   max={maxPrice}
@@ -233,7 +234,7 @@ const ProductPage = () => {
                     onChange={(e) => {
                       dispatch({ type: "SORT", payload: "HIGH-TO-LOW" });
                     }}
-                    checked={sortBy === "HIGH-TO-LOW"}
+                    // checked={sortBy === "HIGH-TO-LOW"}
                   />
                   <span className="check-desc">Price - High to Low</span>
                 </label>

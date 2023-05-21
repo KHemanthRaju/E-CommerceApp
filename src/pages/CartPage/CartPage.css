@@ -1,17 +1,3 @@
-.product-cards {
-  box-sizing: border-box;
-}
-
-.product-card {
-  display: inline-block;
-  flex-wrap: wrap;
-  box-shadow: 0 0 10px black;
-  margin: 10px 10px;
-  width: 30%;
-  height: 450px;
-  align-items: center;
-  justify-content: center;
-}
 .counter-countainer {
   width: 100%;
   display: grid;
