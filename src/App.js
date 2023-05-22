@@ -9,6 +9,7 @@ import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { Navbar } from "./components";
 import ScrollToTop from "./ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { cartData } = useContext(DataContext);
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/mockapi" element={<Mockman />} />
       </Routes>
+      <Toaster />
     </div>
   );
 };
