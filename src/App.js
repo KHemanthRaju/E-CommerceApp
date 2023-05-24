@@ -1,55 +1,70 @@
 import "./App.css";
-import { Routes, Route, NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { DataContext } from "./contexts/DataContext";
 import Mockman from "mockman-js";
-import { ProductPage } from "./pages/ProductPage/ProductPage";
-import { CartPage } from "./pages/CartPage/CartPage";
-import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
-import { HomePage } from "./pages/HomePage/HomePage";
-import { Navbar } from "./components";
-import ScrollToTop from "./ScrollToTop";
+import { Route, Routes } from "react-router-dom";
+import {
+  HomePage,
+  ProductPage,
+  WishlistPage,
+  CartPage,
+  LoginPage,
+  SignupPage,
+  CheckoutPage,
+  PaymentSuccessPage,
+} from "./pages/index";
+import { Navbar } from "./components/index";
+import { useAuth } from "./contexts/AuthContext";
+import { RequireAuth } from "./hooks/RequireAuth";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "./ScrollToTop";
 
-const App = () => {
-  const { cartData } = useContext(DataContext);
-  const getStyle = ({ isActive }) => ({
-    color: isActive ? "red" : "blue",
-  });
-
+function App() {
+  const { user } = useAuth();
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <div className="main-container2">
       <ScrollToTop />
       <Navbar />
-      {/* <nav>
-        <h3>Book Factory</h3>
-        <NavLink to="/" style={getStyle}>
-          Fancy Store
-        </NavLink>
-        <NavLink to="/product" style={getStyle}>
-          Product Page
-        </NavLink>
-        <NavLink to="/cart" style={getStyle}>
-          Cart - {cartData.length}
-        </NavLink>
-        <NavLink to="/wishlist" style={getStyle}>
-          Whishlist
-        </NavLink>
-        <NavLink to="/login" style={getStyle}>
-          Login
-        </NavLink>
-      </nav> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/product" element={<ProductPage />} />
-        <Route path="/cart" element={<CartPage />} />
+        <Route
+          path="/wishlist"
+          element={
+            <RequireAuth>
+              <WishlistPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth>
+              <CartPage />
+            </RequireAuth>
+          }
+        />
+        {/* <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <CheckoutPage />
+            </RequireAuth>
+          }
+        /> */}
+        <Route
+          path="/success"
+          element={
+            <RequireAuth>
+              <PaymentSuccessPage />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/mockapi" element={<Mockman />} />
       </Routes>
       <Toaster />
     </div>
   );
-};
+}
 
 export default App;

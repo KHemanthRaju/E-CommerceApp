@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (email, password) => {
     axios
-      .post("/api/auth/login", {
+      .post(`/api/auth/login`, {
         email,
         password,
       })

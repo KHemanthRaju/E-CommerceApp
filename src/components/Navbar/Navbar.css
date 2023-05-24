@@ -13,6 +13,20 @@
   justify-content: space-between;
 }
 
+.header-name-a {
+  text-decoration: none;
+  letter-spacing: 10px;
+  margin: auto 1px;
+  font-weight: 500;
+  font-size: 30px;
+  background: #32ea21;
+  background: linear-gradient(to left, #cf7348 0%, #5513f0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
 .brand-logo {
   height: 3.75rem;
 }

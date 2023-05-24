@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./CartPage.css";
 import { useCart } from "../../contexts/index";
 import { Link } from "react-router-dom";
-// import { useRazorpay } from "../../hooks/useRazorpay";
+import { useRazorpay } from "../../hooks/useRazorpay";
 
 export const CartPage = () => {
   const [placeOrder, setPlaceOrder] = useState(false);
   const { cart, cart_total, dispatchCart } = useCart();
   const isCartFilled = cart.length > 0;
-  // const { displayRazorPay } = useRazorpay();
+  const { displayRazorPay } = useRazorpay();
 
-  // const makePayment = async () => {
-  //   await displayRazorPay({ total: cart_total });
-  // };
+  const makePayment = async () => {
+    await displayRazorPay({ total: cart_total });
+  };
 
   const removeFromCart = (productId) => {
     dispatchCart({ type: "REMOVE_FROM_CART", payload: productId });

@@ -19,6 +19,10 @@ const filterReducer = (state, action) => {
       return { ...state, category };
     case "CLEAR-FILTER":
       return defaultFilterState;
+    // case "FILTER_QUERY":
+    //   return {
+    //     ...state,
+    //   }
     default:
       return state;
   }

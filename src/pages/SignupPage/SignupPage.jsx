@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/index";
+import { useAuth } from "../../contexts/index";
 import "./SignupPage.css";
 
 const SignupPage = () => {

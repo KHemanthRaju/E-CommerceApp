@@ -1,3 +1,48 @@
+html {
+  scroll-behavior: smooth;
+}
+
+ul.menu {
+  display: flex;
+  align-items: center;
+}
+
+.main-product {
+  display: flex;
+  width: 100%;
+}
+
+.section-title {
+  padding: 1rem;
+}
+
+.filter-wrapper {
+  flex-direction: column;
+  width: 16.87rem;
+  height: 100%;
+  padding: 1rem 2rem;
+  left: 0;
+  overflow-y: auto;
+  flex-shrink: 0;
+  gap: 2rem;
+  position: sticky;
+  top: 90px;
+  left: 0;
+}
+
+.actual-price::before {
+  content: "\20B9";
+}
+
+.disc-price::before {
+  content: "\20B9";
+}
+
+.priceSlider {
+  width: 100%;
+}
+
+.filter-header,
 .range-price {
   display: flex;
   justify-content: space-between;

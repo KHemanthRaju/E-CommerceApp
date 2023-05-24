@@ -299,7 +299,7 @@ export const ProductPage = () => {
                       </div>
                       <div className="price">
                         <p className="disc-price">{discountPrice}</p>
-                        <p className="actual-price">{price}</p>
+                        <p className="actual-price"> {price}</p>
                         <p class Name="price-percentage">
                           {offerPercent}
                         </p>
