@@ -19,6 +19,7 @@ import ScrollToTop from "./ScrollToTop";
 import { Account } from "./pages/Account/Account";
 import { Profile } from "./pages/Account/component/Profile";
 import { Address } from "./pages/Account/component/Address";
+import { ProductDetails } from "./pages/ProductDetails/ProductDetails";
 
 function App() {
   const { user } = useAuth();
@@ -45,14 +46,14 @@ function App() {
             </RequireAuth>
           }
         />
-        {/* <Route
+        <Route
           path="/checkout"
           element={
             <RequireAuth>
               <CheckoutPage />
             </RequireAuth>
           }
-        /> */}
+        />
         <Route
           path="/success"
           element={
@@ -71,6 +72,7 @@ function App() {
         ></Route>
         <Route path="/account/profile" element={<Profile />}></Route>
         <Route path="/account/address" element={<Address />}></Route>
+        <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/mockapi" element={<Mockman />} />

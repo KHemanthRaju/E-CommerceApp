@@ -3,7 +3,7 @@ import { useCart } from "../../contexts/CartContext";
 import "./CheckoutPage.css";
 import { Link } from "react-router-dom";
 
-const CheckoutPage = () => {
+export const CheckoutPage = () => {
   const [placeOrder, setPlaceOrder] = useState(false);
   const {
     cart,
@@ -103,5 +103,3 @@ const CheckoutPage = () => {
     </div>
   );
 };
-
-export { CheckoutPage };

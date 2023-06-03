@@ -4,5 +4,5 @@ export { LoginPage } from "./LoginPage/LoginPage";
 export { SignupPage } from "./SignupPage/SignupPage";
 export { ProductPage } from "./ProductPage/ProductPage";
 export { WishlistPage } from "./WishlistPage/WishlistPage";
-// export { CheckoutPage } from "./CheckoutPage/CheckoutPage";
+export { CheckoutPage } from "./CheckoutPage/CheckoutPage";
 export { PaymentSuccessPage } from "./PaymentSuccessPage/PaymentSuccessPage";

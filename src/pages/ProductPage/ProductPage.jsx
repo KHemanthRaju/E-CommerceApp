@@ -278,7 +278,12 @@ export const ProductPage = () => {
               return (
                 <div key={_id} className="featured__product">
                   <div className="card-vertical">
-                    <img src={img} className="card-image" alt="card" />
+                    <img
+                      src={img}
+                      className="card-image"
+                      alt="card"
+                      onClick={() => navigate(`/product/${_id}`)}
+                    />
                     <span className="card-badge">{badge}</span>
                     <i
                       className="fas fa-heart"
