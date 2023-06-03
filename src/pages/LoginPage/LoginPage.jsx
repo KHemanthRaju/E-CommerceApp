@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { toast } from "react-hot-toast";
-import { useAuth } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import "./LoginPage.css";
+import { useAuth } from "../../contexts/index";
+import toast from "react-hot-toast";
 
-const notifyLogin = () => toast.success("Successfully login!!");
+const notifyLogin = () => toast.success("Successfully Login !!");
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,12 +19,12 @@ export const LoginPage = () => {
 
   const loginWithGuest = (e) => {
     e.preventDefault();
-    login("hemanthRaju@gmail.com", "hemanth1234");
+    login("rajuhemanth@gmail.com", "raju123");
     notifyLogin();
   };
 
   return (
-    <div className="main-logo">
+    <div className="main-login">
       <div className="center">
         <h1>Login</h1>
         <form onSubmit={(e) => loginHandler(e)}>
@@ -53,10 +54,10 @@ export const LoginPage = () => {
             Login
           </button>
           <button className="btn btn-success" onClick={loginWithGuest}>
-            Guest Login
+            GUEST LOGIN
           </button>
           <div className="signup_link">
-            Create Your Account
+            Create Your Account |{" "}
             <Link to="/signup">
               <b>Signup</b>
             </Link>
@@ -66,3 +67,5 @@ export const LoginPage = () => {
     </div>
   );
 };
+
+export { LoginPage };

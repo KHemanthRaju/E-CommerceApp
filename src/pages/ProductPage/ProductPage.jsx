@@ -8,6 +8,7 @@ import {
   filterBySort,
   filterByPriceRange,
   filterByRating,
+  filterBySearch,
   filterByCategory,
 } from "../../utils/index";
 import { useWishlist, useCart, useAuth } from "../../contexts/index";
@@ -53,9 +54,10 @@ export const ProductPage = () => {
   `;
 
   const { minPrice, maxPrice } = getMinMaxPrice(products);
-  const { priceSlider, category, rating, sortby } = state;
+  const { priceSlider, category, rating, sortby, search } = state;
 
   const filteredBySort = filterBySort(products, sortby);
+  // const filteredSearch = filterBySearch(filteredBySort, search);
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
   const filteredProducts = filterByCategory(filteredByRating, category);

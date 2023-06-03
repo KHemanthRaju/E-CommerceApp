@@ -16,6 +16,9 @@ import { useAuth } from "./contexts/AuthContext";
 import { RequireAuth } from "./hooks/RequireAuth";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./ScrollToTop";
+import { Account } from "./pages/Account/Account";
+import { Profile } from "./pages/Account/component/Profile";
+import { Address } from "./pages/Account/component/Address";
 
 function App() {
   const { user } = useAuth();
@@ -58,6 +61,16 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route
+          path="/account"
+          element={
+            <RequireAuth>
+              <Account />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route path="/account/profile" element={<Profile />}></Route>
+        <Route path="/account/address" element={<Address />}></Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/mockapi" element={<Mockman />} />

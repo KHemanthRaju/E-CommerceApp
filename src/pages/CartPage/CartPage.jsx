@@ -165,7 +165,7 @@ export const CartPage = () => {
               className="checkout-cta btn btn-success"
               onClick={() => {
                 if (placeOrder && cart.length !== 0) {
-                  // makePayment();
+                  makePayment();
                 } else if (!placeOrder && cart.length !== 0) {
                   setPlaceOrder(true);
                 }
