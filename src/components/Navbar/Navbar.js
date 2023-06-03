@@ -27,22 +27,24 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar_container">
+    <nav>
       <div className="navbar_main">
-        <Link to="/">
-          <img
+        <Link to="/" className="header-name-a">
+          {/* <img
             src="/img/Hogwarts Supplies.png"
             className="brand-logo"
             alt="logo"
-          />
+          /> */}
+          SNAP CART
         </Link>
-        <input
-          className="search-input"
-          type="text"
-          placeholder="Search"
-          onChange={(e) => debounceSearch(searchHandler, e, 500)}
-        />
+
         <div className="nav-items">
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search"
+            onChange={(e) => debounceSearch(searchHandler, e, 500)}
+          />
           <div className="search">
             <input type="text" className="search-box" placeholder="search" />
             <button className="search-btn">
