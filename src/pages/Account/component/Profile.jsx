@@ -5,8 +5,8 @@ import { useEffect } from "react";
 
 export function Profile() {
   const { userDetails, setUserDetails } = useContext(AuthContext);
-  const { firstName, lastName, email } = userDetails.user || {};
-  //   console.log(userDetails.user.firstName);
+  const { firstName, lastName, email } = userDetails?.user || {};
+  console.log(userDetails?.user?.firstName);
   //   console.log(localStorage.getItem("userData"));
 
   useEffect(() => {

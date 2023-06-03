@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .counter-countainer {
   width: 100%;
   display: grid;
@@ -17,7 +21,10 @@
 .cartCard {
   display: flex;
   flex-wrap: wrap;
+  width: 600px;
   margin: 1rem;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #aaaaaa;
 }
 
 .card-image2 {
@@ -37,6 +44,7 @@
 }
 
 .remove-btn-cart {
+  color: red;
   background: none;
   border-radius: 50%;
   height: 2rem;
@@ -47,12 +55,12 @@
 }
 
 .counter-btn {
-  background-color: wheat;
+  background-color: orange;
   cursor: pointer;
   height: 2rem;
   width: 3rem;
   margin: 1rem;
-  border: none;
+  /* border: none; */
 }
 
 .minus-symb,
@@ -68,15 +76,6 @@
 .link-highlight {
   color: red;
   text-decoration-line: underline;
-}
-
-.card {
-  position: relative;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 1rem;
-  word-wrap: break-word;
-  box-shadow: 0 6px 1.25rem 0 gray;
 }
 
 .card-container {

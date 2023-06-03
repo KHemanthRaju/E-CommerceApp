@@ -33,6 +33,7 @@ export const CartPage = () => {
     (prev, everyCartItem) => prev + Number(everyCartItem.price),
     0
   );
+  const [dummyPrice, setDummyPrice] = useState(0);
   const discount = actualPriceSum - cart_total;
 
   return (
@@ -141,7 +142,9 @@ export const CartPage = () => {
               <h3>Price Summary: </h3>
             </div>
             <div className="total-value final-value">
-              <span className="Psummary-txt">Actual Price👉🏿</span>
+              <span className="Psummary-txt">
+                Actual Price of single Product👉🏿
+              </span>
               <span className="Psummary-price">₹{actualPriceSum}</span>{" "}
             </div>
             <div className="total-value final-value">
