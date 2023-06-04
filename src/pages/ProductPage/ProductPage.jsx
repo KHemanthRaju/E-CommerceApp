@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState, useContext } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import axios from "axios";
 import "./ProductPage.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,14 +8,13 @@ import {
   filterBySort,
   filterByPriceRange,
   filterByRating,
-  filterBySearch,
   filterByCategory,
 } from "../../utils/index";
 import { useWishlist, useCart, useAuth } from "../../contexts/index";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/react";
-import { ProductContext } from "../../contexts/ProductContext";
+// import { ProductContext } from "../../contexts/ProductContext";
 
 const notifyCart = () => toast.success("Added to Card 👜 !!");
 const notifyWishlist = () => toast.success("Added to Wishlist 💗 !! ");
@@ -23,7 +22,7 @@ const notifyWishlist = () => toast.success("Added to Wishlist 💗 !! ");
 export const ProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
-  const { filteredBySearch } = useContext(ProductContext);
+  // const { filteredBySearch } = useContext(ProductContext);
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
   const [products, setProducts] = useState([]);
@@ -56,14 +55,14 @@ export const ProductPage = () => {
   `;
 
   const { minPrice, maxPrice } = getMinMaxPrice(products);
-  const { priceSlider, category, rating, sortby, searchInput } = state;
+  const { priceSlider, category, rating, sortby } = state;
 
   const filteredBySort = filterBySort(products, sortby);
 
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
   const filteredProducts = filterByCategory(filteredByRating, category);
-  const filteredSearch = filteredBySearch(filteredProducts);
+  // const filteredSearch = filteredBySearch(filteredProducts);
 
   // add to wishlist
   const addToWishlist = (product) => {
@@ -93,9 +92,9 @@ export const ProductPage = () => {
     }
   };
 
-  const removeFromCart = (productId) => {
-    dispatchWishlist({ type: "REMOVE_FROM_CART", payload: productId });
-  };
+  // const removeFromCart = (productId) => {
+  //   dispatchWishlist({ type: "REMOVE_FROM_CART", payload: productId });
+  // };
 
   return (
     <>
@@ -272,8 +271,6 @@ export const ProductPage = () => {
                 discountPrice,
                 price,
                 offerPercent,
-                category,
-                rating,
                 _id,
               } = item;
               const isAddedToWishlist = isInWishlist(_id);

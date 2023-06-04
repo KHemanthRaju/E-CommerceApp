@@ -33,7 +33,7 @@ export const CartPage = () => {
     (prev, everyCartItem) => prev + Number(everyCartItem.price),
     0
   );
-  const [dummyPrice, setDummyPrice] = useState(0);
+  // const [dummyPrice, setDummyPrice] = useState(0);
   const discount = actualPriceSum - cart_total;
 
   return (
@@ -52,7 +52,7 @@ export const CartPage = () => {
                     />
                   </div>
                   <div className="card-body flex-column mt-4">
-                    <a className="card-title ">Deliver to :</a>
+                    <p className="card-title ">Deliver to :</p>
                     <p className=" fs-2 pb-1 pl-2">
                       4 Privet Drive, Little Whinging
                     </p>

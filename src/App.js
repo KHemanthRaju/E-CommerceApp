@@ -12,7 +12,7 @@ import {
   PaymentSuccessPage,
 } from "./pages/index";
 import { Navbar } from "./components/index";
-import { useAuth } from "./contexts/AuthContext";
+// import { useAuth } from "./contexts/AuthContext";
 import { RequireAuth } from "./hooks/RequireAuth";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./ScrollToTop";
@@ -22,7 +22,7 @@ import { Address } from "./pages/Account/component/Address";
 import { ProductDetails } from "./pages/ProductDetails/ProductDetails";
 
 function App() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   return (
     <div className="main-container2">
       <ScrollToTop />

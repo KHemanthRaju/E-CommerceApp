@@ -2,17 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useWishlist, useCart, useAuth } from "../../contexts/index";
 import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import { useContext, useRef } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { useContext } from "react";
+// import { CartContext } from "../../contexts/CartContext";
 import { ProductContext } from "../../contexts/ProductContext";
-import axios from "axios";
 
 const Navbar = () => {
-  const timerId = useRef();
   const { wishlist } = useWishlist();
   const { cart } = useCart();
   const navigate = useNavigate();
-  const { addFilterQuery } = useContext(CartContext);
+  // const { addFilterQuery } = useContext(CartContext);
   // const [products, setProducts] = useState([]);
   const { productData, dispatch } = useContext(ProductContext);
   // useEffect(() => {
@@ -27,14 +25,14 @@ const Navbar = () => {
     logout,
   } = useAuth();
 
-  const searchHandler = (e) => {
-    navigate("/product");
-    addFilterQuery(e);
-  };
-  const debounceSearch = (callback, e, delay) => {
-    clearTimeout(timerId.current);
-    timerId.current = setTimeout(() => callback(e), delay);
-  };
+  // const searchHandler = (e) => {
+  //   navigate("/product");
+  //   addFilterQuery(e);
+  // };
+  // const debounceSearch = (callback, e, delay) => {
+  //   clearTimeout(timerId.current);
+  //   timerId.current = setTimeout(() => callback(e), delay);
+  // };
 
   return (
     <nav>

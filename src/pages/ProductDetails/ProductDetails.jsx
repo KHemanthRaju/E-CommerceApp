@@ -29,13 +29,13 @@ export const ProductDetails = () => {
     }
   };
 
-  const removeFromWishlist = (productId) => {
-    dispatchWishlist({ type: "REMOVE_FROM_WISHLIST", payload: productId });
-  };
+  //   const removeFromWishlist = (productId) => {
+  //     dispatchWishlist({ type: "REMOVE_FROM_WISHLIST", payload: productId });
+  //   };
 
-  const isInWishlist = (productId) => {
-    return wishlist.some((product) => product._id === productId);
-  };
+  //   const isInWishlist = (productId) => {
+  //     return wishlist.some((product) => product._id === productId);
+  //   };
 
   // Add to Cart
   const addToCart = (product) => {
@@ -49,17 +49,9 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const { getProductDetail } = useContext(ProductContext);
   const product = getProductDetail(productId);
-  const {
-    img,
-    badge,
-    title,
-    discountPrice,
-    ratings,
-    price,
-    offerPercent,
-    _id,
-  } = product;
-  const isAddedToWishlist = isInWishlist(_id);
+  const { img, title, discountPrice, ratings, price, offerPercent, _id } =
+    product;
+  //   const isAddedToWishlist = isInWishlist(_id);
 
   return (
     <div key={_id} className="product-in-container">

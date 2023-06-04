@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useContext, createContext, useEffect } from "react";
+import { useState, useContext, createContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -22,24 +22,24 @@ export function AuthProvider({ children }) {
   const signup = async (email, password, firstName, lastName) => {
     try {
       console.log(email, password, firstName, lastName);
-      const response = await axios
-        .post(`/api/auth/signup`, {
-          email,
-          password,
-          firstName,
-          lastName,
-        })
-        .then(function (response) {
-          const userData = {
-            token: response.data.encodedToken,
-            user: response.data.createdUser,
-          };
-          setUser(userData);
-          // console.log(userData);
-          localStorage.setItem("userData", JSON.stringify(userData));
-          console.log(location);
-          navigate(location?.state?.from?.pathname || "/", { replace: true });
-        });
+      // const response = await axios
+      //   .post(`/api/auth/signup`, {
+      //     email,
+      //     password,
+      //     firstName,
+      //     lastName,
+      //   })
+      //   .then(function (response) {
+      //     const userData = {
+      //       token: response.data.encodedToken,
+      //       user: response.data.createdUser,
+      //     };
+      //     setUser(userData);
+      //     // console.log(userData);
+      //     localStorage.setItem("userData", JSON.stringify(userData));
+      //     console.log(location);
+      //     navigate(location?.state?.from?.pathname || "/", { replace: true });
+      //   });
     } catch (error) {
       console.log(error);
     }

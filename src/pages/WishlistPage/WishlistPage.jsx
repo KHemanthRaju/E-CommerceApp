@@ -49,10 +49,7 @@ export const WishlistPage = () => {
               discountPrice,
               price,
               offerPercent,
-              category,
-              rating,
               _id,
-              button,
             } = item;
             return (
               <div key={_id} className="featured_product">

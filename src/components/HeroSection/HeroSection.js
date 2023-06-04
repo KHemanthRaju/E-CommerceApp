@@ -16,7 +16,7 @@ const HeroSection = () => {
               GO SHOPPING
             </Link>
           </div>
-          <img src="img/harry.gif" alt="home image" className="home__img" />
+          <img src="img/harry.gif" alt="home imge" className="home__img" />
         </div>
       </section>
 
