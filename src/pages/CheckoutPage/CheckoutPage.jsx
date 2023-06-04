@@ -4,7 +4,7 @@ import "./CheckoutPage.css";
 import { Link } from "react-router-dom";
 
 export const CheckoutPage = () => {
-  const [placeOrder, setPlaceOrder] = useState(false);
+  // const [placeOrder, setPlaceOrder] = useState(false);
   const {
     cart,
     decreaseCartItem,
