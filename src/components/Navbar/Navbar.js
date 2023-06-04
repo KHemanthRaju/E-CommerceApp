@@ -2,10 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useWishlist, useCart, useAuth } from "../../contexts/index";
 import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { CartContext } from "../../contexts/CartContext";
-import { ProductContext } from "../../contexts/ProductContext";
-import axios from "axios";
+// import { ProductContext } from "../../contexts/ProductContext";
+// import axios from "axios";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
@@ -13,14 +13,14 @@ const Navbar = () => {
   const { cart } = useCart();
   const navigate = useNavigate();
   const { addFilterQuery } = useContext(CartContext);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   // const { productData, dispatch } = useContext(ProductContext);
-  useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("/api/products");
-      setProducts(data.products);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const { data } = await axios.get("/api/products");
+  //     setProducts(data.products);
+  //   })();
+  // }, []);
 
   const {
     user: { token },
