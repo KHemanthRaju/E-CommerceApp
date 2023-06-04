@@ -1,4 +1,4 @@
-import { defaultFilterState } from "./DefaultFilterState";
+import { defaultFilterState } from "../reducers/index";
 
 const filterReducer = (state, action) => {
   // const SORT = "SORT";
