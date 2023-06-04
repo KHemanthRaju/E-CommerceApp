@@ -53,7 +53,11 @@ const LoginPage = () => {
           <button className="btn btn-success" type="submit">
             Login
           </button>
-          <button className="btn btn-success" onClick={loginWithGuest}>
+          <button
+            className="btn btn-success"
+            type="submit"
+            onClick={loginWithGuest}
+          >
             GUEST LOGIN
           </button>
           <div className="signup_link">
