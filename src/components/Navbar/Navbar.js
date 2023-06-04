@@ -2,37 +2,39 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useWishlist, useCart, useAuth } from "../../contexts/index";
 import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import { useContext } from "react";
-// import { CartContext } from "../../contexts/CartContext";
+import { useContext, useEffect, useRef, useState } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import { ProductContext } from "../../contexts/ProductContext";
+import axios from "axios";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
+  const timerId = useRef();
   const { cart } = useCart();
   const navigate = useNavigate();
-  // const { addFilterQuery } = useContext(CartContext);
-  // const [products, setProducts] = useState([]);
-  const { productData, dispatch } = useContext(ProductContext);
-  // useEffect(() => {
-  //   (async () => {
-  //     const { data } = await axios.get("/api/products");
-  //     setProducts(data.products);
-  //   })();
-  // }, []);
+  const { addFilterQuery } = useContext(CartContext);
+  const [products, setProducts] = useState([]);
+  // const { productData, dispatch } = useContext(ProductContext);
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get("/api/products");
+      setProducts(data.products);
+    })();
+  }, []);
 
   const {
     user: { token },
     logout,
   } = useAuth();
 
-  // const searchHandler = (e) => {
-  //   navigate("/product");
-  //   addFilterQuery(e);
-  // };
-  // const debounceSearch = (callback, e, delay) => {
-  //   clearTimeout(timerId.current);
-  //   timerId.current = setTimeout(() => callback(e), delay);
-  // };
+  const searchHandler = (e) => {
+    navigate("/product");
+    addFilterQuery(e);
+  };
+  const debounceSearch = (callback, e, delay) => {
+    clearTimeout(timerId.current);
+    timerId.current = setTimeout(() => callback(e), delay);
+  };
 
   return (
     <nav>
@@ -40,8 +42,7 @@ const Navbar = () => {
         <Link to="/" className="header-name-a">
           SNAP CART
         </Link>
-        <div className="nav-search">
-          {/* <SearchOutlinedIcon className="nav-icon search-icon" /> */}
+        {/* <div className="nav-search">
           <input
             placeholder="Search"
             value={productData.searchInput}
@@ -50,47 +51,47 @@ const Navbar = () => {
               navigate("/product");
             }}
           />
-        </div>
-        {/* <div className="nav-items">
+        </div> */}
+        <div className="nav-items">
           <input
             className="search-input"
             type="text"
             placeholder="Search"
             onChange={(e) => debounceSearch(searchHandler, e, 500)}
-          /> */}
-        <div className="search">
-          <input type="text" className="search-box" placeholder="search" />
-          <button className="search-btn">
-            <i className="fa fa-search"></i>
-          </button>
-        </div>
-        <Link to="/wishlist">
-          <FaHeart size={25} />
-          {token ? (
-            <span className="count-notify">{wishlist.length}</span>
-          ) : null}
-        </Link>
-        <Link to="/cart">
-          <FaShoppingCart size={25} />
-          {token ? <span className="count-notify">{cart.length}</span> : null}
-        </Link>
-        <Link to="/account">{token ? "Account" : ""}</Link>
-        {token ? (
-          <button
-            className="btn btn-danger"
-            onClick={() => {
-              logout();
-            }}
-          >
-            Logout
-          </button>
-        ) : (
-          <Link to="/signup">
-            <FaUserCircle size={25} />
+          />
+          <div className="search">
+            <input type="text" className="search-box" placeholder="search" />
+            <button className="search-btn">
+              <i className="fa fa-search"></i>
+            </button>
+          </div>
+          <Link to="/wishlist">
+            <FaHeart size={25} />
+            {token ? (
+              <span className="count-notify">{wishlist.length}</span>
+            ) : null}
           </Link>
-        )}
+          <Link to="/cart">
+            <FaShoppingCart size={25} />
+            {token ? <span className="count-notify">{cart.length}</span> : null}
+          </Link>
+          <Link to="/account">{token ? "Account" : ""}</Link>
+          {token ? (
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                logout();
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/signup">
+              <FaUserCircle size={25} />
+            </Link>
+          )}
+        </div>
       </div>
-      {/* </div> */}
     </nav>
   );
 };
