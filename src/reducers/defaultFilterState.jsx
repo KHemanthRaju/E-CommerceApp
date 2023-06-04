@@ -8,7 +8,7 @@ const defaultFilterState = {
   category: [],
   rating: "1-AND-ABOVE",
   sortBy: "HIGH-TO-LOW",
-  search: "",
+  searchInput: "",
 };
 
 export { defaultFilterState };

@@ -1,6 +1,6 @@
-export const filterBySearch = (products, search) => {
+export const filterBySearch = (products, searchInput) => {
   console.log(products);
   return products.filter(({ title }) =>
-    title.toLowerCase().includes(search.toLowerCase().trim())
+    title.toLowerCase().includes(searchInput.toLowerCase().trim())
   );
 };

@@ -22,6 +22,7 @@ const filterReducer = (state, action) => {
     case "FILTER_QUERY":
       return {
         ...state,
+        searchInput: action.payload,
       };
     default:
       return state;

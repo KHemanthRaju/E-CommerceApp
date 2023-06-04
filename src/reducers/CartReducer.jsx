@@ -47,9 +47,10 @@ const cartReducer = (state, action) => {
         cart_total: state.cart_total - Number(action.payload.discountPrice),
       };
     case "FILTER_QUERY":
+      console.log(action.payload);
       return {
         ...state,
-        filter: { ...state.filter, searchQuery: action.payload },
+        searchInput: action.payload,
       };
 
     case "CLEAR_CART":

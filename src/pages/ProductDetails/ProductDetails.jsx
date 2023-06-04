@@ -70,20 +70,8 @@ export const ProductDetails = () => {
           alt="card"
           onClick={() => navigate(`/product/${_id}`)}
         />
-        <span className="card-badge">{badge}</span>
-        <i
-          className="fas fa-heart"
-          style={{
-            color: isAddedToWishlist ? "tomato" : "silver",
-          }}
-          onClick={() => {
-            if (isAddedToWishlist) {
-              removeFromWishlist(_id);
-            } else {
-              addToWishlist(product);
-            }
-          }}
-        ></i>
+        {/* <span className="card-badge">{badge}</span> */}
+
         <div className="product-in-detail">
           <div className="card-title">
             <div>
@@ -111,6 +99,20 @@ export const ProductDetails = () => {
             }}
           >
             Add to Cart
+          </button>
+        )}
+        {wishlist?.some((cartItem) => product._id === cartItem._id) ? (
+          <Link to="/wishlist">
+            <button className="btn btn-danger add-cart">Go to wishlist</button>
+          </Link>
+        ) : (
+          <button
+            className="btn btn-success add-cart"
+            onClick={() => {
+              addToWishlist(product);
+            }}
+          >
+            Add to Wishlist
           </button>
         )}
       </div>

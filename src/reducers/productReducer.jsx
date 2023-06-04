@@ -4,6 +4,8 @@ export const productReducer = (prevState, { type, payload }) => {
       return { ...prevState, categories: [...payload] };
     case "SET_PRODUCT":
       return { ...prevState, products: payload };
+    case "SEARCH":
+      return { ...prevState, searchInput: payload };
     default:
       return { ...prevState };
   }

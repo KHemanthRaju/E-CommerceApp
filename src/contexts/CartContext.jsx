@@ -8,6 +8,7 @@ const initialStateCart = {
   cart_total: 0,
   actualPriceSum: 0,
   discount: 0,
+  searchInput: "",
   filter: {
     searchQuery: "",
   },
@@ -20,6 +21,7 @@ export const CartProvider = ({ children }) => {
     dispatchCart({ type: "CLEAR_CART", payload: [] });
   };
   const addFilterQuery = (e) => {
+    console.log("Coming filter query");
     dispatchCart({ type: "FILTER_QUERY", payload: e.target.value });
   };
   return (
