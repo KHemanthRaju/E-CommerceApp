@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const notifyLogin = () => toast.success("Successfully Login !!");
 
-const LoginPage = () => {
+export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -53,15 +53,11 @@ const LoginPage = () => {
           <button className="btn btn-success" type="submit">
             Login
           </button>
-          <button
-            className="btn btn-success"
-            type="submit"
-            onClick={loginWithGuest}
-          >
+          <button className="btn btn-success" onClick={loginWithGuest}>
             GUEST LOGIN
           </button>
           <div className="signup_link">
-            Create Your Account |{" "}
+            Create Your Account |
             <Link to="/signup">
               <b>Signup</b>
             </Link>
@@ -71,5 +67,3 @@ const LoginPage = () => {
     </div>
   );
 };
-
-export { LoginPage };
