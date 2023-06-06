@@ -11,7 +11,7 @@ import {
   CheckoutPage,
   PaymentSuccessPage,
 } from "./pages/index";
-import { Navbar } from "./components/index";
+import { Footer, Navbar } from "./components/index";
 // import { useAuth } from "./contexts/AuthContext";
 import { RequireAuth } from "./hooks/RequireAuth";
 import { Toaster } from "react-hot-toast";
@@ -78,6 +78,7 @@ function App() {
         <Route path="/mockapi" element={<Mockman />} />
       </Routes>
       <Toaster />
+      <Footer />
     </div>
   );
 }
