@@ -14,7 +14,7 @@ import { useWishlist, useCart, useAuth } from "../../contexts/index";
 import toast from "react-hot-toast";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/react";
-// import { ProductContext } from "../../contexts/ProductContext";
+import { useData } from "../../contexts/DataContext";
 
 const notifyCart = () => toast.success("Added to Card 👜 !!");
 const notifyWishlist = () => toast.success("Added to Wishlist 💗 !! ");
@@ -22,13 +22,14 @@ const notifyWishlist = () => toast.success("Added to Wishlist 💗 !! ");
 export const ProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
-  // const { filteredBySearch } = useContext(ProductContext);
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
   const [products, setProducts] = useState([]);
   const {
     user: { token },
   } = useAuth();
+
+  const { Datastate } = useData();
 
   const navigate = useNavigate();
 
@@ -62,7 +63,12 @@ export const ProductPage = () => {
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
   const filteredProducts = filterByCategory(filteredByRating, category);
-  // const filteredSearch = filteredBySearch(filteredProducts);
+  const filteredSearch =
+    Datastate.searchInput.length === 0
+      ? filteredProducts
+      : filteredProducts.filter((item) =>
+          item.title.toLowerCase().includes(Datastate.searchInput.toLowerCase())
+        );
 
   // add to wishlist
   const addToWishlist = (product) => {
@@ -263,7 +269,7 @@ export const ProductPage = () => {
 
           {/* right section display cards */}
           <div className="featured__container bd-grid">
-            {filteredProducts.map((item) => {
+            {filteredSearch.map((item) => {
               const {
                 img,
                 badge,

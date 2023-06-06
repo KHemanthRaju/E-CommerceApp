@@ -2,38 +2,23 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useWishlist, useCart, useAuth } from "../../contexts/index";
 import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import { useContext, useRef } from "react";
-import { CartContext } from "../../contexts/CartContext";
-// import { ProductContext } from "../../contexts/ProductContext";
-// import axios from "axios";
+import { useData } from "../../contexts/DataContext";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
-  const timerId = useRef();
   const { cart } = useCart();
   const navigate = useNavigate();
-  const { addFilterQuery } = useContext(CartContext);
-  // const [products, setProducts] = useState([]);
-  // const { productData, dispatch } = useContext(ProductContext);
-  // useEffect(() => {
-  //   (async () => {
-  //     const { data } = await axios.get("/api/products");
-  //     setProducts(data.products);
-  //   })();
-  // }, []);
-
+  const { Datadispatch } = useData();
   const {
     user: { token },
     logout,
   } = useAuth();
 
-  const searchHandler = (e) => {
+  const handlesearch = (event) => {
+    event.target.length === 0
+      ? Datadispatch({ type: "RESET" })
+      : Datadispatch({ type: "SET_INPUT", payload: event.target.value });
     navigate("/product");
-    addFilterQuery(e);
-  };
-  const debounceSearch = (callback, e, delay) => {
-    clearTimeout(timerId.current);
-    timerId.current = setTimeout(() => callback(e), delay);
   };
 
   return (
@@ -42,29 +27,13 @@ const Navbar = () => {
         <Link to="/" className="header-name-a">
           SNAP CART
         </Link>
-        {/* <div className="nav-search">
-          <input
-            placeholder="Search"
-            value={productData.searchInput}
-            onChange={(event) => {
-              dispatch({ type: "SEARCH", payload: event.target.value });
-              navigate("/product");
-            }}
-          />
-        </div> */}
         <div className="nav-items">
           <input
-            className="search-input"
             type="text"
-            placeholder="Search"
-            onChange={(e) => debounceSearch(searchHandler, e, 500)}
+            placeholder="Search here"
+            className="search_bar"
+            onChange={handlesearch}
           />
-          <div className="search">
-            <input type="text" className="search-box" placeholder="search" />
-            <button className="search-btn">
-              <i className="fa fa-search"></i>
-            </button>
-          </div>
           <Link to="/wishlist">
             <FaHeart size={25} />
             {token ? (

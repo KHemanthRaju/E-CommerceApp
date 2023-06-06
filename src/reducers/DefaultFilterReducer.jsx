@@ -6,7 +6,6 @@ const { maxPrice } = getMinMaxPrice(products);
 export const defaultFilterState = {
   priceSlider: maxPrice,
   category: [],
-  rating: "1-AND-ABOVE",
+  rating: "",
   sortBy: "HIGH-TO-LOW",
-  searchInput: "",
 };
