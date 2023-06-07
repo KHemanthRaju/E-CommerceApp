@@ -1,21 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 
 const HeroSection = () => {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/categories");
-        const data = await res.json();
-        setCategories(data.categories);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    fetchData();
-  }, []);
   return (
     <main className="main-1">
       <section className="home" id="home">
@@ -32,8 +19,6 @@ const HeroSection = () => {
           <img src="img/harry.gif" alt="home imge" className="home__img" />
         </div>
       </section>
-
-      {/* Man and Women Categories */}
       <section className="collection section">
         <div className="collection__container bd-grid">
           <div className="collection__box">
@@ -55,7 +40,9 @@ const HeroSection = () => {
           <div className="collection__box">
             <div className="collection__data">
               <h2 className="collection__title">
-                <span className="collection__subtitle">Women</span>
+                <span className="collection__subtitle">
+                  Toys and Accessories
+                </span>
                 <div>PRODUCTS</div>
               </h2>
               <Link to="/product" className="collection__view">

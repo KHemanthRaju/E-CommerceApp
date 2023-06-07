@@ -1,6 +1,7 @@
 import { toast } from "react-hot-toast";
 import { useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
+import "./WishlistPage.css";
 
 export const WishlistPage = () => {
   const notifyCart = () => toast.success("Added to Cart!!");
@@ -56,14 +57,14 @@ export const WishlistPage = () => {
                 <div className="card-vertical">
                   <img src={img} className="card-image" alt="card" />
                   <span className="card-badge">{badge}</span>
-                  <button className="remove-btn">
+                  {/* <button className="remove-btn">
                     <i
-                      className="fas fa-items"
+                      // className="fas fa-times"
                       onClick={() => {
                         removeFromWishlist(_id);
                       }}
                     ></i>
-                  </button>
+                  </button> */}
                   <div className="card-info">
                     <div className="card-title">
                       <div>
