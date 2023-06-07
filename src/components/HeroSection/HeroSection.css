@@ -28,6 +28,7 @@
 }
 
 .collection__title {
+  color: orange;
   font-size: var(--h1-font-size);
   line-height: 1.2;
   margin-bottom: var(--mb-2);
@@ -53,7 +54,8 @@
   margin: 0;
   padding: 0;
   margin-top: 1rem;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
+  color: orange;
 }
 
 .home__title span {

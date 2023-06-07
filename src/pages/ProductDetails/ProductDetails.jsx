@@ -49,8 +49,16 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const { getProductDetail } = useContext(ProductContext);
   const product = getProductDetail(productId);
-  const { img, title, discountPrice, ratings, price, offerPercent, _id } =
-    product;
+  const {
+    img,
+    title,
+    discountPrice,
+    ratings,
+    price,
+    offerPercent,
+    _id,
+    description,
+  } = product;
   //   const isAddedToWishlist = isInWishlist(_id);
 
   return (
@@ -79,6 +87,7 @@ export const ProductDetails = () => {
           </div>
         </div>
         <p className="product-in-rating">Ratings : {ratings}/5</p>
+        <p>Description : {description}</p>
         {cart?.some((cartItem) => product._id === cartItem._id) ? (
           <Link to="/cart">
             <button className="btn btn-danger add-cart">Go to cart</button>

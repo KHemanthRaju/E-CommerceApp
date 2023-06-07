@@ -4,7 +4,7 @@
   /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
   display: inline;
   margin: auto;
-  width: 50%;
+  max-width: 50%;
 }
 
 .product-in-image {

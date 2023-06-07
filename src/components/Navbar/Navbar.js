@@ -27,6 +27,7 @@ const Navbar = () => {
         <Link to="/" className="header-name-a">
           SNAP CART
         </Link>
+
         <div className="nav-items">
           <input
             type="text"
@@ -34,6 +35,7 @@ const Navbar = () => {
             className="search_bar"
             onChange={handlesearch}
           />
+          <Link to="/product">Products</Link>
           <Link to="/wishlist">
             <FaHeart size={25} />
             {token ? (

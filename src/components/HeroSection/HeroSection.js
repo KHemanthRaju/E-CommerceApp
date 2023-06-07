@@ -8,12 +8,13 @@ const HeroSection = () => {
       <section className="home" id="home">
         <div className="home__container">
           <div className="home__data">
+            <h2>Welcome to E-Commerce Website</h2>
             <h1 className="home__title">
-              <p className="title-heading">NEW</p>
-              <span>ARRIVALS</span>
+              <p className="title-heading">SNAP CART</p>
+              <span>SHOPPING</span>
             </h1>
             <Link to="/product" className="button">
-              GO SHOPPING
+              SHOP NOW
             </Link>
           </div>
           <img src="img/harry.gif" alt="home imge" className="home__img" />
