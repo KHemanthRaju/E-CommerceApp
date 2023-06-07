@@ -39,7 +39,7 @@ export const useRazorpay = () => {
       key: "rzp_test_SjYVhvnj56VqGp",
       amount: total * 100,
       currency: "INR",
-      name: "Hogwarts Supplies",
+      name: "Snap Cart Shopping",
       description: "You are one step closer to get your products...",
       handler: async function (response) {
         clearCart();

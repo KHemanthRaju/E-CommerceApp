@@ -57,14 +57,14 @@ export const WishlistPage = () => {
                 <div className="card-vertical">
                   <img src={img} className="card-image" alt="card" />
                   <span className="card-badge">{badge}</span>
-                  {/* <button className="remove-btn">
+                  <button>
                     <i
                       // className="fas fa-times"
                       onClick={() => {
                         removeFromWishlist(_id);
                       }}
                     ></i>
-                  </button> */}
+                  </button>
                   <div className="card-info">
                     <div className="card-title">
                       <div>
