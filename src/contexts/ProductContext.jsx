@@ -21,22 +21,6 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {
     getProductData();
   }, []);
-  const filteredBySearch = (productData) => {
-    return productData?.searchInput
-      ? productData?.products?.filter(({ title }) =>
-          title
-            ?.toLowerCase()
-            ?.includes(productData?.searchInput?.toLowerCase()?.trim())
-        )
-      : productData?.products;
-  };
-  //   const filteredBySearch = productState.searchInput
-  //     ? productState.products.filter((product) =>
-  //         product.title
-  //           .toLowerCase()
-  //           .includes(productState.searchInput.toLowerCase())
-  //       )
-  //     : productState.products;
   const getProductDetail = (productId) => {
     return productData.products.find(({ _id }) => _id === productId);
   };
@@ -46,7 +30,6 @@ export const ProductProvider = ({ children }) => {
         products: productData.products,
         categories: productData.categories,
         getProductDetail,
-        filteredBySearch,
         dispatch,
         productData,
       }}

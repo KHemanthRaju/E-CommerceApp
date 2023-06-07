@@ -23,7 +23,7 @@ const DataReducer = (state, action) => {
     case "RESET":
       return {
         ...state,
-        searchFilter: "",
+        searchInput: "",
         categoryFilter: [],
         priceFilter: null,
         ratingFilter: 0,

@@ -17,13 +17,10 @@ const filterReducer = (state, action) => {
         category = [...state.category, action.payload];
       }
       return { ...state, category };
+    case "SET_CATEGORY_SHOP":
+      return { ...state, category: action.payload };
     case "CLEAR-FILTER":
       return defaultFilterState;
-    case "FILTER_QUERY":
-      return {
-        ...state,
-        searchInput: action.payload,
-      };
     default:
       return state;
   }

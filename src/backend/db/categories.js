@@ -8,20 +8,20 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Tshirt",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      " Dark Chocolate type of chocolate has a higher percentage of cocoasolids and very little or no added milk content, resulting in a rich, slightly bitter flavor.",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Toys",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "While technically not a chocolate because it contains no cocoa solids, white chocolate is made with cocoa butter, sugar, and milk solids, giving it a sweet, creamy taste.",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Accessories",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "Ruby Chocolate is a relatively new type of chocolate that is made from ruby cocoa beans and has a naturally pink color and fruity slightly tart flavor.",
   },
 ];

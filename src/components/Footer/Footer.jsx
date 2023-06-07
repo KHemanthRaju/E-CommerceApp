@@ -1,7 +1,5 @@
 import "./Footer.css";
-
 import { Link, useLocation } from "react-router-dom";
-
 import { BsTwitter, BsGithub, BsLinkedin } from "react-icons/bs";
 
 export function Footer() {
@@ -24,7 +22,7 @@ export function Footer() {
             <li>
               <Link
                 className="FooterAboutUsLink"
-                to="https://twitter.com/Ankita050105"
+                to="https://twitter.com/khraju123"
                 target="_blank"
               >
                 <BsTwitter />
@@ -33,7 +31,7 @@ export function Footer() {
             <li>
               <Link
                 className="FooterAboutUsLink"
-                to="https://github.com/Ahana001"
+                to="https://github.com/KHemanthRaju"
                 target="_blank"
               >
                 <BsGithub />
@@ -42,7 +40,7 @@ export function Footer() {
             <li>
               <Link
                 className="FooterAboutUsLink"
-                to="https://www.linkedin.com/in/ankita001/"
+                to="https://www.linkedin.com/in/hemanth-raju-aba388176/"
                 target="_blank"
               >
                 <BsLinkedin />
@@ -57,7 +55,6 @@ export function Footer() {
               <li className="FooterLink">About</li>
               <li className="FooterLink">Blog</li>
               <li className="FooterLink">Privacy</li>
-              <li className="FooterLink">Terms</li>
               <li className="FooterLink">FAQs</li>
             </ul>
           </div>
@@ -71,9 +68,7 @@ export function Footer() {
           <div className="FooterNewsLetterbutton">Subscribe</div>
         </div>
       </div>
-      <div className="FooterCopyRight">
-        © Grocery Commerce Private Limited , 2016-2023
-      </div>
+      <div className="FooterCopyRight">SnapCart © 2023</div>
     </div>
   );
 }
