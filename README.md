@@ -62,3 +62,5 @@ https://www.loom.com/share/0bdea7dac62d41f3bd7d10a15109fb29
 ### BACKEND
 
 1. mockBee - https://mockbee.netlify.app/
+
+postman API documentation for fitness tracker link : https://documenter.getpostman.com/view/13986603/2s9YXe8jVA
